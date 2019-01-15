@@ -7,7 +7,7 @@ package casino;
 
 /**
  *
- * @author s.jiao
+//olivier suk
  */
 public class CASINO {
 
