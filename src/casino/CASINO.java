@@ -6,7 +6,7 @@
 package casino;
 
 /**
- *
+ * ching chong wang wong
  * @author s.jiao
  */
 public class CASINO {
