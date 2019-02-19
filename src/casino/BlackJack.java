@@ -20,5 +20,7 @@ public class BlackJack extends GeneralUser{
         int pickSuite = (int) (Math.random() * 4);
         int pickcard = (int) (Math.random() * 13);
           
+       
+        
     }
 }
