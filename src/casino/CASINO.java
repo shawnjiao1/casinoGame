@@ -16,6 +16,9 @@ public class CASINO {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        while(true){
+        System.out.println((int)(Math.random()*4));
+        }
     }
     
 }
