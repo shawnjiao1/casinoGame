@@ -15,6 +15,9 @@ public class GeneralUser extends User {
      
      
      
+     public GeneralUser(String name, String pass){
+         super(name,pass);
+     }
      
      public GeneralUser(String name, int income, int age, double balance, double weight, double height, boolean male, String user, String pass){
         
