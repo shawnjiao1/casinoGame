@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
  *
  * @author l.bonville
  */
+
+
 public class LogIn extends javax.swing.JFrame {
 
     /**
@@ -125,26 +127,44 @@ public class LogIn extends javax.swing.JFrame {
         String userTemp = userField.getText();
         
         char[] passTemp = passField.getPassword();
+        String pass = new String(passTemp);
         
-        if ( ! (userTemp.equalsIgnoreCase(usernames[0]) || userTemp.equalsIgnoreCase(usernames[1]))) {
-            
-            JOptionPane.showMessageDialog(null, "Incorrect username or password.", "error", 0);
-            
-        }//End if
-        
-        //if (passwords[0].charAt(i) == passTemp[i])
-        
-        else if (userTemp.equalsIgnoreCase(usernames[0])) {
-            
-            new SignUp().setVisible(true);
-            //this.dispose();
-            
-        } else {
-            
-            new AdminWindow().setVisible(true);
-            this.dispose();
+        boolean found = false;
+        for(int i = 0; i<CASINO.userList.size(); i++){
+            GeneralUser user = CASINO.userList.get(i);
+            if (user.getUsername().equals(userTemp) && user.getPassword().equals(pass)){
+                found = true;
+                break;
+            }
             
         }
+        
+        if (found){
+       new SelectionMenu().setVisible(true);
+        }
+        else{
+        JOptionPane.showMessageDialog(this, "Incorrect User or Pass");
+        }
+        
+//        if ( ! (userTemp.equalsIgnoreCase(usernames[0]) || userTemp.equalsIgnoreCase(usernames[1]))) {
+//            
+//            JOptionPane.showMessageDialog(null, "Incorrect username or password.", "error", 0);
+//            
+//        }//End if
+//        
+//        //if (passwords[0].charAt(i) == passTemp[i])
+//        
+//        else if (userTemp.equalsIgnoreCase(usernames[0])) {
+//            
+//            new SignUp().setVisible(true);
+//            //this.dispose();
+//            
+//        } else {
+//            
+//            new AdminWindow().setVisible(true);
+//            this.dispose();
+//            
+//        }
         
     }//GEN-LAST:event_submitButtonActionPerformed
 
@@ -153,9 +173,7 @@ public class LogIn extends javax.swing.JFrame {
      */
     
     
-    String[] usernames = {"Kronk", "Shaggy"};
-    String[] passwords = {"password", "scoobs123"};
-
+  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
