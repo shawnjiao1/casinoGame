@@ -3,7 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package casino;
+
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
+import javax.swing.border.Border;
 
 /**
  *
@@ -11,11 +21,80 @@ package casino;
  */
 public class Slots extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Slots
-     */
+    Timer timer, timer2, timer3;
+    int count = 0,count2 = 0,count3 = 0;
+    int delay = 200,delay2 = 200,delay3 = 200;
+    
+    
+    
+    
+    Random rand = new Random();
     public Slots() {
+        
         initComponents();
+        balanceLabel.setText("Balance: " + CASINO.userList.get(CASINO.currentUserIndex).balance );
+        System.out.println(delay);
+        timer = new Timer(delay, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                    count++;
+                    
+                    System.out.println(delay);
+                    int randomNum = rand.nextInt((10 - 0) + 1) + 0;
+                    //zeroes included to show use of the max min random int form
+                slotOne.setText(randomNum+"");
+                    System.out.println(count);
+                    
+                    
+                    
+                if(count>10){
+                    
+                    timer.stop();
+                    count = 0;
+                } 
+                
+            }
+   
+        });
+        
+        timer2 = new Timer(delay2, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                    count2++;
+                    
+                int randomNum = rand.nextInt((10 - 0) + 1) + 0;
+                    //zeroes included to show use of the max min random int form
+                slotTwo.setText(randomNum+"");
+                    //System.out.println(count2);
+                if(count2>20){
+                    timer2.stop();
+                count2 = 0 ;
+                }
+            }
+   
+        });
+        
+        timer3 = new Timer(delay3, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                    count3++;
+                    
+                int randomNum = rand.nextInt((10 - 0) + 1) + 0;
+                    //zeroes included to show use of the max min random int form
+                slotThree.setText(randomNum+"");
+                    //System.out.println(count);
+                if(count3>30){
+                    
+                    timer3.stop();
+                    gameEnd();
+                    count3 = 0;
+                }
+            }
+            
+            
+            
+   
+        });
+        
+        
+        
         
         
     }
@@ -30,19 +109,87 @@ public class Slots extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        slotPanel = new javax.swing.JPanel();
+        slotTitle = new javax.swing.JLabel();
+        spinButton = new javax.swing.JButton();
+        slotTwo = new javax.swing.JLabel();
+        slotThree = new javax.swing.JLabel();
+        slotOne = new javax.swing.JLabel();
+        balanceLabel = new javax.swing.JLabel();
+        endGameLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 380, Short.MAX_VALUE)
+        slotPanel.setBackground(new java.awt.Color(255, 51, 51));
+
+        slotTitle.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
+        slotTitle.setText("SLOTS 10$ PER SPIN");
+
+        spinButton.setText("Click to Spin");
+        spinButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                spinButtonActionPerformed(evt);
+            }
+        });
+
+        slotTwo.setText("0");
+
+        slotThree.setText("0");
+
+        slotOne.setText("0");
+
+        balanceLabel.setText("Balance:     ");
+
+        endGameLabel.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        endGameLabel.setText("Win tons of $$$$");
+
+        javax.swing.GroupLayout slotPanelLayout = new javax.swing.GroupLayout(slotPanel);
+        slotPanel.setLayout(slotPanelLayout);
+        slotPanelLayout.setHorizontalGroup(
+            slotPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(slotPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(slotPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(slotPanelLayout.createSequentialGroup()
+                        .addComponent(balanceLabel)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, slotPanelLayout.createSequentialGroup()
+                        .addGap(0, 71, Short.MAX_VALUE)
+                        .addGroup(slotPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, slotPanelLayout.createSequentialGroup()
+                                .addComponent(slotOne, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(slotTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(47, 47, 47)
+                                .addComponent(slotThree, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(74, 74, 74))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, slotPanelLayout.createSequentialGroup()
+                                .addComponent(spinButton)
+                                .addGap(143, 143, 143))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, slotPanelLayout.createSequentialGroup()
+                                .addComponent(slotTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(62, 62, 62))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, slotPanelLayout.createSequentialGroup()
+                                .addComponent(endGameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(130, 130, 130))))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+        slotPanelLayout.setVerticalGroup(
+            slotPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(slotPanelLayout.createSequentialGroup()
+                .addGap(4, 4, 4)
+                .addComponent(balanceLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(slotTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(slotPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(slotTwo)
+                    .addComponent(slotThree)
+                    .addComponent(slotOne, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53)
+                .addComponent(spinButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(endGameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -51,56 +198,71 @@ public class Slots extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(slotPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(slotPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void spinButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spinButtonActionPerformed
+        if(CASINO.userList.get(CASINO.currentUserIndex).balance <= 0){
+            endGameLabel.setText("you have insufficient funds lol");
+        }
+        
+        
+        CASINO.userList.get(CASINO.currentUserIndex).balance -=10; 
+        
+        balanceLabel.setText("Balance: " + CASINO.userList.get(CASINO.currentUserIndex).getBalance() );
+        if(count == 0){
+        timer.start(); timer2.start(); timer3.start();
+        }
+        
+        
+    }//GEN-LAST:event_spinButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Slots.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Slots.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Slots.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Slots.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    
+    public void gameEnd(){
+        
+        
+        
+        int s1 = Integer.parseInt(slotOne.getText());
+        int s2 = Integer.parseInt(slotTwo.getText());
+        int s3 = Integer.parseInt(slotThree.getText());
+        
+        if ( s1 == s2 && s2 == s3 && s1 == s3){
+            endGameLabel.setText("You win 100$ good job wow");
+            CASINO.userList.get(CASINO.currentUserIndex).balance +=100;
+            
+        } else if(s1 == s2 || s2 == s3 || s1 == s3){
+            endGameLabel.setText("You win 20$ good job wow");
+            CASINO.userList.get(CASINO.currentUserIndex).balance +=10;
+        } else {
+            endGameLabel.setText("L");
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Slots().setVisible(true);
-            }
-        });
+        
+        
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel balanceLabel;
+    private javax.swing.JLabel endGameLabel;
+    private javax.swing.JLabel slotOne;
+    private javax.swing.JPanel slotPanel;
+    private javax.swing.JLabel slotThree;
+    private javax.swing.JLabel slotTitle;
+    private javax.swing.JLabel slotTwo;
+    private javax.swing.JButton spinButton;
     // End of variables declaration//GEN-END:variables
 }

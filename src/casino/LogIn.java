@@ -134,13 +134,18 @@ public class LogIn extends javax.swing.JFrame {
             GeneralUser user = CASINO.userList.get(i);
             if (user.getUsername().equals(userTemp) && user.getPassword().equals(pass)){
                 found = true;
+                CASINO.currentUserIndex = CASINO.getIndexFromUsername(user.getUsername());
+                
+                
                 break;
             }
             
         }
         
         if (found){
-       new SelectionMenu().setVisible(true);
+       //java.awt.EventQueue.invokeLater(() -> {
+           new SelectionMenu().setVisible(true);
+      // });
         }
         else{
         JOptionPane.showMessageDialog(this, "Incorrect User or Pass");
