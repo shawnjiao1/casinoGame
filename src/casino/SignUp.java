@@ -5,6 +5,8 @@
  */
 package casino;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author s.jiao
@@ -136,7 +138,21 @@ public class SignUp extends javax.swing.JFrame {
     }//GEN-LAST:event_confirmPasswordTextFieldActionPerformed
 
     private void signupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupButtonActionPerformed
-        // TODO add your handling code here:
+        //1.  check fields existing
+        if(passwordTextField.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Missing password, username, or passwords dont match!!");
+    }else{
+            if(CASINO.userList.)
+        }
+        
+        //2. check name not exiting in Casino.userList
+        
+        //3. check two passwords are the same
+        
+        // 4. write into  Casino.userList
+        
+        String check =  confirmPasswordTextField.getText();
+       
     }//GEN-LAST:event_signupButtonActionPerformed
 
     /**
@@ -172,7 +188,7 @@ public class SignUp extends javax.swing.JFrame {
                 new SignUp().setVisible(true);
             }
         });
-    }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField confirmPasswordTextField;
