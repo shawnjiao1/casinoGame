@@ -139,20 +139,27 @@ public class SignUp extends javax.swing.JFrame {
 
     private void signupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupButtonActionPerformed
         //1.  check fields existing
-        if(passwordTextField.getText().isEmpty()){
-            JOptionPane.showMessageDialog(this, "Missing password, username, or passwords dont match!!");
-    }else{
-            if(CASINO.userList.)
-        }
-        
+//        if (usernameTextField.getText().isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Missing user name");
+//            return;
+//        } 
+//        
+//       
+//     if (CASINO.userList.contains(usernameTextField.getText())) {
+//            JOptionPane.showMessageDialog(this, "Username exists allready!!");
+//
+//        } else if (!passwordTextField.getText().equals(confirmPasswordTextField.getText())) {
+//            JOptionPane.showMessageDialog(this, "Passwords dont match!");
+//        }else{
+//    }
+            GeneralUser user = new GeneralUser(usernameTextField.getText(), passwordTextField.getText());
+            CASINO.userList.add(user);
+       new LogIn().setVisible(true);
+
         //2. check name not exiting in Casino.userList
-        
         //3. check two passwords are the same
-        
         // 4. write into  Casino.userList
-        
-        String check =  confirmPasswordTextField.getText();
-       
+
     }//GEN-LAST:event_signupButtonActionPerformed
 
     /**
@@ -188,7 +195,7 @@ public class SignUp extends javax.swing.JFrame {
                 new SignUp().setVisible(true);
             }
         });
-}
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField confirmPasswordTextField;
