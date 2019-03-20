@@ -130,7 +130,7 @@ public class SelectionMenu extends javax.swing.JFrame {
     private void slotsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slotsButtonActionPerformed
       //12313123new Slots().setVisible(true);
         //java.awt.EventQueue.invokeLater(() -> {
-            //123123123new Slots().setVisible(true);
+            new Slots().setVisible(true);
         //});
         System.out.println();
     }//GEN-LAST:event_slotsButtonActionPerformed
