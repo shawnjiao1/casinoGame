@@ -21,11 +21,13 @@ public class BlackJack extends javax.swing.JFrame {
     int deal = 0;
     int play = 0;
 
+    String result;
+
     public BlackJack() {
         initComponents();
+        balanceLabel.setText("Balance: " + CASINO.userList.get(CASINO.currentUserIndex).balance);
+
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,31 +38,39 @@ public class BlackJack extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        bal = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        hitButton = new javax.swing.JButton();
+        stayButton = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         resultsArea = new javax.swing.JTextArea();
-        jTextField1 = new javax.swing.JTextField();
+        betField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        startButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        balanceLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 153, 255));
-        jPanel1.setForeground(new java.awt.Color(102, 102, 255));
+        bal.setBackground(new java.awt.Color(102, 153, 255));
+        bal.setForeground(new java.awt.Color(102, 102, 255));
 
         jLabel1.setText("Black Jack");
 
-        jButton1.setText("HIT");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        hitButton.setText("HIT");
+        hitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                hitButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("STAY");
+        stayButton.setText("STAY");
+        stayButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stayButtonActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("BET");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -73,56 +83,75 @@ public class BlackJack extends javax.swing.JFrame {
         resultsArea.setRows(5);
         jScrollPane1.setViewportView(resultsArea);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        betField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                betFieldActionPerformed(evt);
             }
         });
 
         jLabel2.setText("ENTER BET ");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        startButton.setText("START");
+        startButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startButtonActionPerformed(evt);
+            }
+        });
+
+        balanceLabel.setText("  ");
+
+        javax.swing.GroupLayout balLayout = new javax.swing.GroupLayout(bal);
+        bal.setLayout(balLayout);
+        balLayout.setHorizontalGroup(
+            balLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, balLayout.createSequentialGroup()
+                .addGroup(balLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(balLayout.createSequentialGroup()
                         .addGap(177, 177, 177)
                         .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(balLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(60, 60, 60)
-                                .addComponent(jButton2))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(balLayout.createSequentialGroup()
+                        .addComponent(startButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(hitButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(stayButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(balLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(balLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addGroup(balLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton3)
+                            .addComponent(betField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel3)
+                    .addComponent(balanceLabel))
                 .addGap(19, 19, 19))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        balLayout.setVerticalGroup(
+            balLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, balLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel1)
                 .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                .addGroup(balLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(stayButton)
+                    .addComponent(hitButton)
+                    .addComponent(startButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(balLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(balLayout.createSequentialGroup()
+                        .addGroup(balLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(betField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton3)
+                        .addGap(45, 45, 45)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(balanceLabel)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE))
                 .addContainerGap())
@@ -134,48 +163,109 @@ public class BlackJack extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-        
+    private void hitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hitButtonActionPerformed
 
+        if (play < 21) {
+            int randomCard = getCard();
+            int randomSuite = getSuite();
+            if (randomCard == 0) {
+                play += 11;
+            } else if (randomCard >= 10) {
+                play += 10;
+            } else {
+                play += randomCard + 1;
+            }
+            result += "\nThe player got a card: " + card[randomCard] + " of " + suites[randomSuite];
 
+            resultsArea.setText(result);
+        }
 
-        int counter = 0;
-        int counter2 = 0;
- 
+        checkWin();
+    }//GEN-LAST:event_hitButtonActionPerformed
+
+    private int getCard() {
+        return random.nextInt((12 - 0) + 1) + 0;
+    }
+
+    private int getSuite() {
+        return random.nextInt((3 - 0) + 1) + 0;
+    }
+
+    private void checkWin() {
+        if (play == 21) {
+            play = 0;
+            result += "The player won!!\n";
+            CASINO.userList.get(CASINO.currentUserIndex).balance += beting() * 2;
+            balanceLabel.setText("Balance: " + CASINO.userList.get(CASINO.currentUserIndex).balance);
+            resultsArea.setText(result);
+        } else if (play > 21) {
+            play = 0;
+            result += "The player lost!!\n";
+            resultsArea.setText(result);
+        }
+    }
+
+    private int beting() {
+        return Integer.parseInt(betField.getText());
+    }
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int bet = beting();
+
+        if (CASINO.userList.get(CASINO.currentUserIndex).balance <= 0) {
+            resultsArea.setText("you have insufficient funds lol");
+        } else if (CASINO.userList.get(CASINO.currentUserIndex).balance < bet) {
+            resultsArea.setText("you have insufficient funds lol");
+        } else {
+            resultsArea.setText("You have made your bet!");
+            CASINO.userList.get(CASINO.currentUserIndex).balance -= bet;
+            balanceLabel.setText("Balance: " + CASINO.userList.get(CASINO.currentUserIndex).balance);
+        }
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void betFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_betFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_betFieldActionPerformed
+
+    private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         int randomCard = 0;
-        
+        int randomSuite = 0;
         //step 1: dealer only get two cards
-        for(int i=0;i<2;i++){
+        for (int i = 0; i < 2; i++) {
             randomCard = getCard();
-            if (randomCard == 0 &&counter==0) {
+            randomSuite = getSuite();
+            if (randomCard == 0) {
                 deal += 11;
 
-            } else if (randomCard >= 10 && counter > 0) {
+            } else if (randomCard >= 10) {
                 deal += 10;
-            } else if(randomCard<10 && counter >0){
+            } else {
                 deal += randomCard + 1;
             }
         }
         // to do 1: display value of randomCard
-        
+        result = "The dealer drew 2 cards one of them is the " + card[randomCard] + " of " + suites[randomSuite] + "\n";
+        resultsArea.setText(result);
+
         // step 2: player get two cards
-        for(int i=0;i<2;i++){
+        for (int i = 0; i < 2; i++) {
             randomCard = getCard();
+            randomSuite = getSuite();
             if (randomCard == 0) {
                 play += 11;
 
@@ -185,68 +275,40 @@ public class BlackJack extends javax.swing.JFrame {
                 play += randomCard + 1;
             }
             // to do 2: display the player i+1 randomCard
+            result += "The player got a card: " + card[randomCard] + " of " + suites[randomSuite] + "\n";
+
+            resultsArea.setText(result);
         }
-        
-        // step 3: while loop and ask do you want more card 
-        if (counter == 0) {
-            for (int i = 0; i < 2; i++) {
-                if (randomCardPlay == 0) {
-                    play += 11;
-                    counter++;
-                } else if (randomCardPlay >= 10) {
-                    play += 10;
-                } else {
-                    play += randomCardPlay + 1;
-                }
-            }
+    }//GEN-LAST:event_startButtonActionPerformed
+
+    private void stayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stayButtonActionPerformed
+        if (play - 21 > deal - 21) {
+            play = 0;
+            resultsArea.setText("The player won!!\n");
+            balanceLabel.setText("Balance: " + CASINO.userList.get(CASINO.currentUserIndex).balance + "\n");
+            CASINO.userList.get(CASINO.currentUserIndex).balance += beting() * 2;
         } else {
-            if (randomCardPlay >= 10) {
-                play += 10;
-            } else {
-                play += randomCardPlay + 1;
-            }
+            play = 0;
+            resultsArea.setText("The player lost!!\n");
         }
-
-
-       //  resultsArea.setText("You drew a " + card[randomCardPlay] + " of " + suites[randomSuitePlay]);
-        //resultsArea.setText("You opponent drew a " + card[randomCardDeal] + " of " + suites[randomSuiteDeal]);
-   
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private int getCard(){
-        return random.nextInt((13 - 0) + 1) + 0;
-    }
-
-    private int getSuite(){
-        return random.nextInt((4 - 0) + 1) + 0;
-    }
-    
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       
-     
-        if (CASINO.userList.get(CASINO.currentUserIndex).balance <= 0) {
-            resultsArea.setText("you have insufficient funds lol");
-        }
-
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_stayButtonActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JPanel bal;
+    private javax.swing.JLabel balanceLabel;
+    private javax.swing.JTextField betField;
+    private javax.swing.JButton hitButton;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextArea resultsArea;
+    private javax.swing.JButton startButton;
+    private javax.swing.JButton stayButton;
     // End of variables declaration//GEN-END:variables
 }
