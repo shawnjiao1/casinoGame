@@ -128,7 +128,7 @@ public class SelectionMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void slotsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slotsButtonActionPerformed
-      //12313123new Slots().setVisible(true);
+//      //12313123new Slots().setVisible(true);
         //java.awt.EventQueue.invokeLater(() -> {
             new Slots().setVisible(true);
         //});
@@ -140,7 +140,7 @@ public class SelectionMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        new BlackJack().setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void printAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printAreaActionPerformed
@@ -150,8 +150,16 @@ public class SelectionMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_printAreaActionPerformed
 
     private void printButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printButtonActionPerformed
-        printArea.setText("E STATMENT FOR" + CASINO.userList.get(CASINO.currentUserIndex).getName() + "\n\n\n" + "Starting balance: $" + CASINO.userList.get(CASINO.currentUserIndex).openingBalance + "\n\n\n" + "Final Balance: $" + CASINO.userList.get(CASINO.currentUserIndex).balance + "\n\n\n"+ "Change: $" + (CASINO.userList.get(CASINO.currentUserIndex).openingBalance - CASINO.userList.get(CASINO.currentUserIndex).balance));
+       
+        
+        printArea.setText("E STATMENT FOR " + CASINO.userList.get(CASINO.currentUserIndex).getName() + "\nStarting balance: $" + CASINO.userList.get(CASINO.currentUserIndex).openingBalance +  "\nFinal Balance: $" + CASINO.userList.get(CASINO.currentUserIndex).balance +  "\nChange: $" + (CASINO.userList.get(CASINO.currentUserIndex).openingBalance - CASINO.userList.get(CASINO.currentUserIndex).balance));
+       // printArea.setText("\n Starting Balance: $" + CASINO.userList.get(CASINO.currentUserIndex).openingBalance);
+              //  printArea.setText("\nFinal Balance: $" + CASINO.userList.get(CASINO.currentUserIndex).balance);
+
+        
         System.out.println("!");
+        
+        
         try{ 
             Boolean printdata = printArea.print();
         System.out.println("?");

@@ -1,1 +1,3 @@
 John,232,23,200.0,30000.0,52.0,male,jdawg,john123,0
+Shawn Jiao,1,1,10000.0,1.0,1.0,male,shawnjiao,shawnjiao,0
+joe,1000,12,100.0,10.0,1.0,male,joe,joe,0
