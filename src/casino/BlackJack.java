@@ -7,10 +7,7 @@ package casino;
 
 import java.util.Random;
 
-/**
- *
- * @author Shawn The Sexy Beast
- */
+
 public class BlackJack extends javax.swing.JFrame {
 
     String[] card = {"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
